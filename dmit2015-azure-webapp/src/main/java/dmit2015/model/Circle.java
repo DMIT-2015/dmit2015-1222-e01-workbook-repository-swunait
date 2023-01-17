@@ -8,24 +8,24 @@ public class Circle {
     }
 
     // CHECKED  exception example
-    public void setRadius(double radius) throws Exception {
-        // Validate the new value assigned to the Radius
-        if (radius <= 0)
-        {
-            throw new Exception("Radius must be a positive non-zero number.");
-        }
-        this.radius = radius;
-    }
-
-    // RuntimeException example
-//    public void setRadius(double radius) {
+//    public void setRadius(double radius) throws Exception {
 //        // Validate the new value assigned to the Radius
 //        if (radius <= 0)
 //        {
-//            throw new RuntimeException("Radius must be a positive non-zero number.");
+//            throw new Exception("Radius must be a positive non-zero number.");
 //        }
 //        this.radius = radius;
 //    }
+
+    // RuntimeException example
+    public void setRadius(double radius) {
+        // Validate the new value assigned to the Radius
+        if (radius <= 0)
+        {
+            throw new RuntimeException("Radius must be a positive non-zero number.");
+        }
+        this.radius = radius;
+    }
 
     public Circle() {
         this.radius = 1;
@@ -35,15 +35,17 @@ public class Circle {
         this.radius = radius;
     }
 
-    public double Area()
+    public double area()
     {
         return Math.PI * radius * radius;
     }
 
-    public double Perimeter()
+    public double diameter()
     {
-        return 2 * Math.PI * radius;
+        return 2 * radius;
     }
+
+    public double circumference() { return 2 * Math.PI * radius; }
 
     public static void main(String[] args) throws Exception {
         Circle circle1 = new Circle();
@@ -52,8 +54,8 @@ public class Circle {
 // perimeter should be 6.28
         System.out.println("The radius of circle1 is " + circle1.getRadius());
         System.out.printf("The radius of circle1 is %s\n", circle1.getRadius());
-        System.out.printf("The area of circle1 is %.5f\n", circle1.Area());
-        System.out.printf("The perimeter of circle1 is %.2f\n", circle1.Perimeter());
+        System.out.printf("The area of circle1 is %.5f\n", circle1.area());
+        System.out.printf("The diameter of circle1 is %.2f\n", circle1.diameter());
 
         try
         {
@@ -63,8 +65,8 @@ public class Circle {
 // area should be 78.53982
 // perimeter should be 31.41593
             System.out.printf("The radius of circle1 is %s\n", circle1.getRadius());
-            System.out.printf("The area of circle1 is %.5f\n", circle1.Area());
-            System.out.printf("The perimeter of circle1 is %.5f\n", circle1.Perimeter());
+            System.out.printf("The area of circle1 is %.5f\n", circle1.area());
+            System.out.printf("The perimeter of circle1 is %.5f\n", circle1.diameter());
 
             // It should throw an exception
             // Change the radius of cirlce1 to -25
