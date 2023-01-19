@@ -8,9 +8,11 @@ class CircleTest {
 
     @Test
     void area_SmallValue_ReturnsCorrectResult() {
-// Arrange and Act
-        Circle circle1 = new Circle(5);
-// Assert
+        // Arrange
+        Circle circle1 = new Circle();
+        // Act
+        circle1.setRadius(5);
+        // Assert
         assertEquals(78.54, circle1.area(), 0.005);
     }
     @Test
