@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+<h:head>
+   <!-- Bootstrap required meta tags -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+         crossorigin="anonymous" />
+
+   <title>AJAX Scope Counter</title>
+</h:head>
+
+<h:body>
+   <h1>AJAX Scope Counter</h1>
+
+   <h:messages id="messages" />
+   <h:outputText id="counterResult" />
+
+   <h:form id="requestScopeForm">
+      <h:commandButton value="Increment RequestScope Counter"
+                       action="#{requestScopeCounterController.submit}">
+         <f:ajax event="action" execute="@form" render=":messages :counterResult" />
+      </h:commandButton>
+   </h:form>
+
+   <h:form id="viewScopeForm">
+      <h:commandButton value="Increment ViewScope Counter"
+                       action="#{viewScopeCounterController.submit}">
+         <f:ajax event="action" execute="@all" render="@all" />
+      </h:commandButton>
+   </h:form>
+
+   <h:form id="sessionScopeForm">
+      <h:commandButton value="Increment SessionScope Counter"
+                       action="#{sessionScopeCounterController.submit}">
+         <f:ajax event="action" execute="@this" render=":messages :counterResult" />
+      </h:commandButton>
+   </h:form>
+
+   <h:form id="applicationScopeForm">
+      <h:commandButton value="Increment ApplicationScope Counter"
+                       action="#{applicationScopeCounterController.submit}">
+         <f:ajax event="action" execute="@form" render=":messages :counterResult" />
+      </h:commandButton>
+   </h:form>
+
+</h:body>
+</html>

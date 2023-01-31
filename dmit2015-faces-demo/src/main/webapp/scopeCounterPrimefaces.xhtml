@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+>
+<f:view>
+
+    <h1>PrimeFaces Scope Counter</h1>
+
+    <p:messages id="messages" />
+    <h:outputText id="counterResult" />
+
+    <h:form id="requestScopeForm">
+        <p:commandButton value="Increment RequestScope Counter"
+                         action="#{requestScopeCounterController.submit}"
+                         update=":messages :counterResult"
+        >
+        </p:commandButton>
+    </h:form>
+
+    <h:form id="viewScopeForm">
+        <p:commandButton value="Increment ViewScope Counter"
+                         action="#{viewScopeCounterController.submit}"
+                         update=":messages :counterResult">
+        </p:commandButton>
+    </h:form>
+
+    <h:form id="sessionScopeForm">
+        <p:commandButton value="Increment SessionScope Counter"
+                         action="#{sessionScopeCounterController.submit}"
+                         update=":messages :counterResult">
+        </p:commandButton>
+    </h:form>
+
+    <h:form id="applicationScopeForm">
+        <p:commandButton value="Increment ApplicationScope Counter"
+                         action="#{applicationScopeCounterController.submit}"
+                         update=":messages :counterResult">
+        </p:commandButton>
+    </h:form>
+
+</f:view>
+</html>
