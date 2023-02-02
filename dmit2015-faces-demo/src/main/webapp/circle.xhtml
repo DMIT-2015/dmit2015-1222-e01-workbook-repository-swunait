@@ -1,0 +1,48 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:my="jakarta.faces.component"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Default Title"/>
+
+    <ui:define name="maincontent">
+        <h1>Faces Circle Calculator</h1>
+
+        <p:messages id="messages" />
+        <p:growl id="growl" />
+
+        <h:form prependId="false">
+            <div>
+                <p:outputLabel for="@next">Radius</p:outputLabel>
+                <p:inputNumber id="radius"
+                               minValue="1"
+                               value="#{currentCircleRequestScopedController.currentCircle.radius}" />
+            </div>
+            <div>
+                <p:commandButton value="Show Area"
+                                 action="#{currentCircleRequestScopedController.showArea()}"
+                                 update=":messages :growl" />
+                <p:commandButton value="Show Diameter"
+                                 action="#{currentCircleRequestScopedController.showDiameter()}"
+                                 update=":messages :growl" />
+                <p:commandButton value="Show Circumference"
+                                 action="#{currentCircleRequestScopedController.showCircumference()}"
+                                 update=":messages :growl" />
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+
+    <title>PrimeFaces Html Form Demo</title>
+
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.0/primeflex.min.css"/>
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.0/themes/saga-blue.css"/>
+</h:head>
+
+<h:body>
+
+    <h1>PrimeFaces Html Form Demo</h1>
+
+    <p:messages id="messages"/>
+
+    <h:form prependId="false" >
+        <p:focus context="panel"/>
+
+        <p:panel id="panel" header="Form Panel">
+            <div class="ui-fluid">
+                <div class="field">
+                    <p:outputLabel for="textValue" >Text Value</p:outputLabel>
+                    <p:inputText id="textValue" value="#{currentFacesDemoFormController.textValue}"/>
+                </div>
+                <div class="field">
+                    <p:outputLabel for="numberValue" >Number Value</p:outputLabel>
+                    <p:inputNumber id="numberValue" value="#{currentFacesDemoFormController.numberValue}"/>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="@next" value="Select One Value"/>
+                    <p:selectOneMenu id="option" value="#{currentFacesDemoFormController.selectValue}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <f:selectItem itemLabel="Select 1" itemValue="selectedValue1"/>
+                        <f:selectItem itemLabel="Select 2" itemValue="selectedValue2"/>
+                        <f:selectItem itemLabel="Select 3" itemValue="selectedValue3"/>
+                        <f:selectItem itemLabel="Select 4" itemValue="selectedValue4"/>
+                        <f:selectItem itemLabel="Select 5" itemValue="selectedValue5"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="@next" value="Select Multiple Values"/>
+                    <p:selectManyMenu value="#{currentFacesDemoFormController.multipleSelectedValues}">
+                        <f:selectItems value="#{currentFacesDemoFormController.multipleSelectOptions}"
+                                       var="currentSelectItem"
+                                       itemLabel="#{currentSelectItem}"
+                                       itemValue="#{currentSelectItem}" />
+                    </p:selectManyMenu>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <p:outputLabel for="@next" value="Select Multiple Checboxes"/>
+                    <p:selectManyCheckbox value="#{currentFacesDemoFormController.multipleCheckboxValues}">
+                        <f:selectItems value="#{currentFacesDemoFormController.multipleCheckboxOptions}"
+                                       var="currentSelectItem"
+                                       itemLabel="#{currentSelectItem}"
+                                       itemValue="#{currentSelectItem}" />
+                    </p:selectManyCheckbox>
+                </div>
+                <div class="field ">
+                    <p:outputLabel for="@next" value="Select Radios"/>
+                    <p:selectOneRadio value="#{currentFacesDemoFormController.radioValue}">
+                        <f:selectItems value="#{currentFacesDemoFormController.radioOptions}"
+                                       var="currentSelectItem"
+                                       itemLabel="#{currentSelectItem}"
+                                       itemValue="#{currentSelectItem}" />
+                    </p:selectOneRadio>
+                </div>
+
+                <div class="field">
+                    <p:outputLabel for="textArea" >Textarea Value</p:outputLabel>
+                    <p:inputTextarea id="textArea" value="#{currentFacesDemoFormController.textareaValue}"
+                                     rows="5"
+                                     cols="50">
+                    </p:inputTextarea>
+                </div>
+
+                <div class="field">
+                    <p:selectBooleanCheckbox  id="booleanCheckbox"
+                                              itemLabel="Check me out"
+                                              value="#{currentFacesDemoFormController.checkbox}"/>
+                </div>
+
+                <div class="field col-12 md:col-2">
+                    <p:outputLabel for="dateValue" >Date Value</p:outputLabel>
+                    <p:datePicker id="dateValue"
+                                  value="#{currentFacesDemoFormController.dateValue}"
+                                  pattern="yyyy-MM-dd"
+                                  showIcon="true"
+                                  showButtonBar="true"
+                                  class="inputfield w-full"
+                    >
+                    </p:datePicker>
+                </div>
+
+                <div class="field col-12 md:col-2">
+                    <p:commandButton value="Submit"
+                                     action="#{currentFacesDemoFormController.submit}"
+                                     update=":messages "
+                    >
+                    </p:commandButton>
+                </div>
+
+            </div>
+        </p:panel>
+    </h:form>
+
+</h:body>
+
+</html>
