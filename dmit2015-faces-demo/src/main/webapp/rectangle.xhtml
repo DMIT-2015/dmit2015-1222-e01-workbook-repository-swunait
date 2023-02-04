@@ -1,0 +1,91 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="sample"/>
+
+    <ui:define name="maincontent">
+        <!-- If FacesContext message sent from init() method annotated with @PostConstruct in the Faces backing bean class are not shown on page:
+            1) Remove the @PostConstruct annotation from the Faces backing bean class
+            2) Add metadata tag shown below to execute the init() method
+        <f:metadata>
+            <f:viewParam name="dummy" />
+            <f:event type="postInvokeAction" listener="#{currentBeanController.init}" />
+        </f:metadata>
+        -->
+
+        <h1>Rectangle Calculator</h1>
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages"/>
+        <p:growl id="growl"/>
+
+        <h:form prependId="false">
+            <p:focus context="formPanel"/>
+
+            <p:panel id="formPanel" header="Form Panel">
+                <div class="ui-fluid">
+
+                    <div class="field">
+                        <p:outputLabel for="@next" >Length</p:outputLabel>
+                        <p:inputText id="length" value="#{currentRectangleRequestScopedView.currentRectangle.length}"/>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next" >Width</p:outputLabel>
+                        <p:inputText id="width" value="#{currentRectangleRequestScopedView.currentRectangle.width}"/>
+                    </div>
+
+                    <div class="formgroup-inline">
+                        <div class="field">
+                            <p:commandButton value="Show Area"
+                                             update=":messages "
+                                             action="#{currentRectangleRequestScopedView.showArea()}"
+                            >
+                            </p:commandButton>
+                        </div>
+                        <div class="field">
+                            <p:commandButton value="Show Diagonal"
+                                             update=":messages "
+                                             action="#{currentRectangleRequestScopedView.showDiagonal()}"
+                            >
+                            </p:commandButton>
+                        </div>
+                        <div class="field">
+                            <p:commandButton value="Show Perimeter"
+                                             update=":messages "
+                                             action="#{currentRectangleRequestScopedView.showPerimeter()}"
+                            >
+                            </p:commandButton>
+                        </div>
+
+                        <div class="field">
+                            <p:commandButton value="Clear"
+                                             update="@form :messages"
+                                             styleClass="ui-button-secondary"
+                            >
+                            </p:commandButton>
+                        </div>
+                    </div>
+
+                </div>
+
+            </p:panel>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

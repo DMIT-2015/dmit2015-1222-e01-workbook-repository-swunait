@@ -6,7 +6,6 @@
         xmlns:h="jakarta.faces.html"
         xmlns:pt="jakarta.faces.passthrough"
         xmlns:cc="jakarta.faces.composite"
-        xmlns:my="jakarta.faces.component"
         xmlns:c="jakarta.tags.core"
         xmlns:fn="jakarta.tags.functions"
         xmlns:o="http://omnifaces.org/ui"
@@ -28,7 +27,7 @@
                 <p:outputLabel for="@next">Radius</p:outputLabel>
                 <p:inputNumber id="radius"
                                minValue="1"
-                               value="#{currentCircleRequestScopedController.currentCircle.radius}" />
+                               value="#{currentCircleRequestScopedController.radius}" />
             </div>
             <div>
                 <p:commandButton value="Show Area"
