@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/dmit2015-1222-e01-workbook-repository-swunait.iml" filepath="$PROJECT_DIR$/.idea/dmit2015-1222-e01-workbook-repository-swunait.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmit2015-faces-demo/dmit2015-faces-demo.iml" filepath="$PROJECT_DIR$/dmit2015-faces-demo/dmit2015-faces-demo.iml" />
     </modules>
   </component>
 </project>
