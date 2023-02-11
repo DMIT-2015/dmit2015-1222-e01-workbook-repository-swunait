@@ -4,19 +4,67 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
              version="3.1">
 
-    <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">
+    <persistence-unit name="h2database-jpa-pu" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=LEGACY;DB_CLOSE_DELAY=-1" />
+            <!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:file:~/jdk/databases/h2/DMIT2015_1222_CourseDB;MODE=LEGACY;" />-->
+            <property name="jakarta.persistence.jdbc.user" value="user2015" />
+            <property name="jakarta.persistence.jdbc.password" value="Password" />
 
             <!-- database.action: drop-and-create, create, update, none -->
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <!-- uncomment the code below if you need to load data from a sql script file each time the app starts -->
+            <!--            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/sql/import-data.sql" />-->
 
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="oracle-jpa-user2015-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/xepdb1" />
+            <property name="jakarta.persistence.jdbc.user" value="user2015" />
+            <property name="jakarta.persistence.jdbc.password" value="Password2015" />
+
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="local-mssql-dmit2015-jpa-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost;databaseName=DMIT2015_1222_CourseDB;TrustServerCertificate=true" />
+            <property name="jakarta.persistence.jdbc.user" value="user2015" />
+            <property name="jakarta.persistence.jdbc.password" value="Password2015" />
+
+        </properties>
+    </persistence-unit>
+
+    <!--    <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>-->
+
+<!--        <properties>-->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
+<!--            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />-->
+
+<!--            &lt;!&ndash; database.action: drop-and-create, create, update, none &ndash;&gt;-->
+<!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+
+<!--        </properties>-->
+<!--    </persistence-unit>-->
 
     <!--    <persistence-unit name="local-mssql-dmit2015-jpa-pu" transaction-type="JTA">-->
     <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->

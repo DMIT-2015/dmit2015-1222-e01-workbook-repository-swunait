@@ -37,7 +37,7 @@ public class CanadianPersonalIncomeTaxRate {
             6) Tax Rate
             7) Base Tax Amount
          */
-        String[] tokens = line.split(line);
+        String[] tokens = line.split(DELIMITER);
         if (tokens.length != 8) {
             throw new RuntimeException("Line does not contain exactly 9 values");
         }

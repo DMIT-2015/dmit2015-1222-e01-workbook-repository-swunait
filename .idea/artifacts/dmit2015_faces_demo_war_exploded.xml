@@ -1,0 +1,92 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dmit2015-faces-demo:war exploded">
+    <output-path>$PROJECT_DIR$/dmit2015-faces-demo/target/dmit2015-faces-demo-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>dmit2015-faces-demo</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dmit2015-faces-demo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:jakarta:12.0.0" />
+          <element id="library" level="project" name="Maven: org.webjars.npm:primeflex:3.3.0" />
+          <element id="library" level="project" name="Maven: org.omnifaces:omnifaces:4.0.1" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-java:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-api:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: com.google.auto.service:auto-service-annotations:1.0.1" />
+          <element id="library" level="project" name="Maven: com.google.auto.service:auto-service:1.0.1" />
+          <element id="library" level="project" name="Maven: com.google.auto:auto-common:1.2" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:31.1-jre" />
+          <element id="library" level="project" name="Maven: com.google.guava:failureaccess:1.0.1" />
+          <element id="library" level="project" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.2" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.12.0" />
+          <element id="library" level="project" name="Maven: com.google.errorprone:error_prone_annotations:2.11.0" />
+          <element id="library" level="project" name="Maven: com.google.j2objc:j2objc-annotations:1.3" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-chromium-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-json:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-devtools-v107:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-devtools-v108:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-devtools-v109:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-devtools-v85:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-edge-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-http:4.8.0" />
+          <element id="library" level="project" name="Maven: dev.failsafe:failsafe:3.3.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: com.beust:jcommander:1.82" />
+          <element id="library" level="project" name="Maven: io.netty:netty-buffer:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-codec-http:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-codec:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-handler:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-common:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport-classes-epoll:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport-classes-kqueue:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport-native-unix-common:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-resolver:4.1.87.Final" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-api:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-context:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-exporter-logging:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-metrics:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-logs:1.22.0-alpha" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-api-logs:1.22.0-alpha" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-common:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.22.0-alpha" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk-trace:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-sdk:1.22.0" />
+          <element id="library" level="project" name="Maven: io.opentelemetry:opentelemetry-semconv:1.22.0-alpha" />
+          <element id="library" level="project" name="Maven: io.ous:jtoml:2.0.0" />
+          <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.12.22" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-exec:1.3" />
+          <element id="library" level="project" name="Maven: org.asynchttpclient:async-http-client:2.12.3" />
+          <element id="library" level="project" name="Maven: org.asynchttpclient:async-http-client-netty-utils:2.12.3" />
+          <element id="library" level="project" name="Maven: io.netty:netty-codec-socks:4.1.60.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-handler-proxy:4.1.60.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.60.Final" />
+          <element id="library" level="project" name="Maven: io.netty:netty-transport-native-kqueue:osx-x86_64:4.1.60.Final" />
+          <element id="library" level="project" name="Maven: org.reactivestreams:reactive-streams:1.0.3" />
+          <element id="library" level="project" name="Maven: com.typesafe.netty:netty-reactive-streams:2.0.4" />
+          <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:1.2.2" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-manager:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:4.8.0" />
+          <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-support:4.8.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.6" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/dmit2015-faces-demo/target/dmit2015-faces-demo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="dmit2015-faces-demo/web/Web" />
+    </root>
+  </artifact>
+</component>
