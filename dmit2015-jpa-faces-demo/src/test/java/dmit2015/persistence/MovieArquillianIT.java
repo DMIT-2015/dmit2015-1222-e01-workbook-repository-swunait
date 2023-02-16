@@ -23,6 +23,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +54,7 @@ public class MovieArquillianIT { // The class must be declared as public
 //                .addAsLibraries(pomFile.resolve("com.microsoft.sqlserver:mssql-jdbc:11.2.3.jre17").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("com.oracle.database.jdbc:ojdbc11:21.8.0.0").withTransitivity().asFile())
 //                .addAsLibraries(pomFile.resolve("org.hibernate.orm:hibernate-spatial:6.1.7.Final").withTransitivity().asFile())
+//                .addPackage("dmit2015.entity")
                 .addClass(ApplicationConfig.class)
                 .addClasses(MovieStartupListener.class)
                 .addClasses(Movie.class, MovieRepository.class)
@@ -105,45 +108,50 @@ public class MovieArquillianIT { // The class must be declared as public
         assertEquals(lastExpectedTitle, lastMovie.getTitle());
     }
 
-//    @Order(2)
-//    @ParameterizedTest
-//    @CsvSource({
-//            "primaryKey,expectedProperty1Value,expectedProperty2Value",
-//            "primaryKey,expectedProperty1Value,expectedProperty2Value"
-//    })
-//    void shouldFineOne(Long movieId, String expectedProperty1, String expectedProperty2) {
-//        // Arrange and Act
-//        Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
-//        assertTrue(optionalMovie.isPresent());
-//        Movie existingMovie = optionalMovie.orElseThrow();
-//
-//        // Assert
-//        assertNotNull(existingMovie);
-//        // assertEquals(expectedProperty1, existingMovie.getProperty2());
-//
-//    }
-//
-//    @Order(3)
-//    @ParameterizedTest
-//    @CsvSource({
-//            "Property1Value, Property2Value, Property3Value",
-//            "Property1Value, Property2Value, Property3Value",
-//    })
-//    void shouldCreate(String property1, String property2, String property3) throws SystemException, NotSupportedException {
-//        _beanManagedTransaction.begin();
-//
-//        // Arrange
-//        Movie newMovie = new Movie();
-//        // newMovie.setProperty1(property1);
-//
-//        // Act
-//        _movieRepository.add(newMovie);
-//
-//        // Assert
-//
-//        _beanManagedTransaction.rollback();
-//    }
-//
+    @Order(2)
+    @ParameterizedTest
+    @CsvSource({
+            "2,Ghostbusters,1984-03-13",
+            "3,Ghostbusters 2,1986-02-23"
+    })
+    void shouldFineOne(Long movieId, String expectedTitle, LocalDate expectedReleaseDate) {
+        // Arrange and Act
+        Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
+        assertTrue(optionalMovie.isPresent());
+        Movie existingMovie = optionalMovie.orElseThrow();
+
+        // Assert
+        assertNotNull(existingMovie);
+        assertEquals(expectedTitle, existingMovie.getTitle());
+        assertEquals(expectedReleaseDate, existingMovie.getReleaseDate());
+    }
+
+    @Order(3)
+    @ParameterizedTest
+    @CsvSource({
+            "Star Wars 99,2099-09-09,Action,99.99,G",
+            "Star Trek 98,2088-08-08,Advendure,88.88,PG",
+    })
+    void shouldCreate(String title, LocalDate releaseDate, String genre, BigDecimal price, String rating) throws SystemException, NotSupportedException {
+        _beanManagedTransaction.begin();
+
+        // Arrange
+        Movie newMovie = new Movie();
+        newMovie.setTitle(title);
+        newMovie.setReleaseDate(releaseDate);
+        newMovie.setGenre(genre);
+        newMovie.setPrice(price);
+        newMovie.setRating(rating);
+
+        // Act
+        _movieRepository.add(newMovie);
+
+        // Assert
+        assertTrue( newMovie.getId() > 0 );
+
+        _beanManagedTransaction.rollback();
+    }
+
 //    @Order(4)
 //    @ParameterizedTest
 //    @CsvSource({
