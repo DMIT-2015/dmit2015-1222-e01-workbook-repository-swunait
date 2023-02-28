@@ -1,0 +1,69 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Movie - Edit"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Edit Movie</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form prependId="false">
+
+            <p:panel header="Movie Details">
+                <div class="ui-fluid">
+                    <div class="field">
+                        <label for="entityId">ID</label>
+                        <p:inputText id="entityId"
+                                     label="MovieID"
+                                     value="#{currentMovieEditView.editId}"
+                                     readonly="true">
+                        </p:inputText>
+                    </div>
+
+                    <!-- TODO: add input field for each editable property of the entity -->
+                    <div class="field">
+                        <p:outputLabel for="@next">Field 1</p:outputLabel>
+                        <p:inputText
+                                id="field1Name"
+                                value="#{currentMovieEditView.existingMovie.field1Name}">
+                        </p:inputText>
+                    </div>
+
+
+                </div>
+
+                <p:commandButton
+                        id="updateButton"
+                        value="Save"
+                        icon="pi pi-save"
+                        action="#{currentMovieEditView.onUpdate()}"
+                        update=":messages @form"/>
+
+
+            </p:panel>
+
+            <p>
+                <p:link id="backToListLink" outcome="index" value="Back to List">
+                </p:link>
+            </p>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

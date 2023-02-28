@@ -1,0 +1,93 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Movie - Create"/>
+
+    <ui:define name="maincontent">
+
+        <h1>Create Movie</h1>
+
+        <p:messages id="messages"/>
+
+        <h:form prependId="false">
+            <p:focus context="panel"/>
+
+            <p:panel id="panel" header="Movie Details">
+                <div class="ui-fluid">
+                    <div class="field">
+                        <p:outputLabel for="@next">title</p:outputLabel>
+                        <p:inputText
+                                id="title"
+                                value="#{currentMovieCreateView.newMovie.title}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">releaseDate</p:outputLabel>
+                        <p:inputText
+                                id="releaseDate"
+                                value="#{currentMovieCreateView.newMovie.releaseDate}">
+                            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">genre</p:outputLabel>
+                        <p:inputText
+                                id="genre"
+                                value="#{currentMovieCreateView.newMovie.genre}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">rating</p:outputLabel>
+                        <p:inputText
+                                id="rating"
+                                value="#{currentMovieCreateView.newMovie.rating}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">price</p:outputLabel>
+                        <p:inputText
+                                id="price"
+                                value="#{currentMovieCreateView.newMovie.price}">
+                        </p:inputText>
+                    </div>
+
+
+                </div>
+
+                <p:commandButton
+                        id="createButton"
+                        value="Create"
+                        icon="pi pi-save"
+                        action="#{currentMovieCreateView.onCreateNew()}"
+                        update=":messages @form"
+                />
+
+            </p:panel>
+
+            <p>
+                <p:link id="backToListLink" outcome="index" value="Back to List">
+                </p:link>
+            </p>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

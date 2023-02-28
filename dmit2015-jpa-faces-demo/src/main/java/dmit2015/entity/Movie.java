@@ -58,18 +58,18 @@ public class Movie implements Serializable {
     private Integer version;
 
     @Column(nullable = false)
-    private LocalDateTime createdDateTime;
+    private LocalDateTime createTime;
 
-    private LocalDateTime updatedDateTime;
+    private LocalDateTime updateTime;
 
     @PrePersist
     private void beforePersist() {
-        createdDateTime = LocalDateTime.now();
+        createTime = LocalDateTime.now();
     }
 
     @PreUpdate
     private void beforeUpdate() {
-        updatedDateTime = LocalDateTime.now();
+        updateTime = LocalDateTime.now();
     }
 
     public static Optional<Movie> parseCsv(String line) {
