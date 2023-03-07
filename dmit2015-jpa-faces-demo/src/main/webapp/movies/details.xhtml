@@ -39,7 +39,7 @@
                     <strong><h:outputText value="releaseDate"/></strong>
                 </h:panelGroup>
                 <h:outputText id="releaseDate" value="#{currentMovieDetailsView.existingMovie.releaseDate}">
-                    <f:convertDateTime type="localDate" pattern="MMM d, yyyy" />
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
                     <!-- Reference example on how to format output using custom date format or custom number format
 
                       <f:convertNumber type="currency" locale="en_CA"/>

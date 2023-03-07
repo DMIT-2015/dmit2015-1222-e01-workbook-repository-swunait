@@ -20,6 +20,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.*;
@@ -60,6 +61,10 @@ public class MovieArquillianIT { // The class must be declared as public
                 .addClasses(Movie.class, MovieRepository.class)
                 // TODO: Add any additional classes or resource files required
                 .addAsResource("data/csv/movies.csv")
+                .addAsResource(new File("src/test/resources/data/csv/FederalIncomeTax_TestData.csv"),
+                        "data/csv/FederalIncomeTax_TestData.csv")
+                .addAsResource(new File("src/test/resources/data/csv/ProvincialIncomeTax_TestData.csv"),
+                        "data/csv/ProvincialIncomeTax_TestData.csv")
                 .addAsResource("META-INF/persistence.xml")
                 .addAsResource("META-INF/beans.xml");
     }

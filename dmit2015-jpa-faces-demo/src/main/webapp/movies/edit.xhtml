@@ -35,13 +35,45 @@
                         </p:inputText>
                     </div>
 
-                    <!-- TODO: add input field for each editable property of the entity -->
                     <div class="field">
-                        <p:outputLabel for="@next">Field 1</p:outputLabel>
+                        <p:outputLabel for="@next">title</p:outputLabel>
                         <p:inputText
-                                id="field1Name"
-                                value="#{currentMovieEditView.existingMovie.field1Name}">
+                                id="title"
+                                value="#{currentMovieEditView.existingMovie.title}">
                         </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">genre</p:outputLabel>
+                        <p:inputText
+                                id="genre"
+                                value="#{currentMovieEditView.existingMovie.genre}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">rating</p:outputLabel>
+                        <p:inputText
+                                id="rating"
+                                value="#{currentMovieEditView.existingMovie.rating}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">price</p:outputLabel>
+                        <p:inputText
+                                id="price"
+                                value="#{currentMovieEditView.existingMovie.price}">
+                        </p:inputText>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="@next">releaseDate</p:outputLabel>
+                        <p:datePicker
+                                id="releaseDate"
+                                pattern="yyyy-MM-dd"
+                                value="#{currentMovieEditView.existingMovie.releaseDate}">
+                        </p:datePicker>
                     </div>
 
 
