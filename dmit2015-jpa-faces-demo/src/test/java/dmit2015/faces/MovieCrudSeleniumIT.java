@@ -195,7 +195,7 @@ public class MovieCrudSeleniumIT {
     @Order(4)
     @ParameterizedTest
     @CsvSource({
-            "Java 19 Release Party,Action,G,9.20,2021-09-20",
+            "Java 19 Release Party,Action,G,9.20,2022-09-20",
     })
     void shouldEditMovie(String updatedTitle, String updatedGenre, String updatedRating, String updatedPrice, String updatedReleaseDate) {
         driver.get("http://localhost:8080/movies/index.xhtml");
