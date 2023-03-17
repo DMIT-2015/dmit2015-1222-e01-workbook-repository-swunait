@@ -226,11 +226,21 @@
                     <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#27.0.1.Final</feature-pack-location>
                     <layers>
                         <!-- https://docs.wildfly.org/27/Bootable_Guide.html#wildfly_layers -->
-                        <layer>web-server</layer>
+                        <layer>jaxrs-server</layer>
                         <layer>jsf</layer>
                         <layer>jpa</layer>
                         <layer>h2-driver</layer>
+                        <layer>management</layer>
+                        <layer>undertow-https</layer>
+                        <layer>ee-security</layer>
                     </layers>
+                    <cli-sessions>
+                        <cli-session>
+                            <script-files>
+                                <script>/home/user2015/jdk/server/wildfly-scripts/configure-elytron.cli</script>
+                            </script-files>
+                        </cli-session>
+                    </cli-sessions>
                     <excluded-layers>
                         <layer>deployment-scanner</layer>
                     </excluded-layers>

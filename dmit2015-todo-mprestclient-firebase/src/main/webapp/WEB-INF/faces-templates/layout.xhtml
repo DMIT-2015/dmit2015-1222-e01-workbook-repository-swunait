@@ -44,20 +44,12 @@
             <p:menubar>
                 <p:menuitem value="Home" icon="pi pi-fw pi-home" url="#{request.contextPath}/index.xhtml"/>
 
-                <p:submenu label="Movies" icon="pi pi-file">
-                    <p:menuitem value="List" icon="pi pi-list"
-                                url="#{request.contextPath}/movies/index.xhtml"/>
-                    <p:menuitem value="Create" icon="pi pi-plus"
-                                url="#{request.contextPath}/movies/create.xhtml"/>
+                <p:submenu label="Todos" icon="pi pi-fw pi-file">
+                    <p:menuitem value="List" icon="pi pi-fw pi-list"
+                                url="#{request.contextPath}/todos/index.xhtml"/>
+<!--                    <p:menuitem value="Create" icon="pi pi-fw pi-plus"-->
+<!--                                url="#{request.contextPath}/students/create.xhtml"/>-->
                 </p:submenu>
-
-                <c:if test="${not empty request.userPrincipal}">
-                    <p:menuitem value="Logout #{request.userPrincipal.name}"
-                                action="#{logout.submit}" />
-                </c:if>
-                <c:if test="${empty request.userPrincipal}">
-                    <p:menuitem value="Login" action="/customLogin" />
-                </c:if>
 
             </p:menubar>
         </h:form>

@@ -32,6 +32,8 @@ public class MovieCreateView {
             _movieRepository.add(newMovie);
             Messages.addFlashGlobalInfo("Create was successful. {0}", newMovie.getId());
             nextPage = "index?faces-redirect=true";
+        } catch (RuntimeException ex) {
+            Messages.addGlobalError(ex.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             Messages.addGlobalError("Create was not successful. {0}", e.getMessage());
