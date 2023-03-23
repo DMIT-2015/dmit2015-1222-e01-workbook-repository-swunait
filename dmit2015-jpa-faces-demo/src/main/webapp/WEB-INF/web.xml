@@ -29,12 +29,24 @@
             <role-name>IT</role-name>
         </auth-constraint>
     </security-constraint>
-    
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Any Authenticated <User>`</User></web-resource-name>
+            <url-pattern>/movies/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>**</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Sales Movie Resources</web-resource-name>
             <url-pattern>/movies/create.xhtml</url-pattern>
             <url-pattern>/movies/edit.xhtml</url-pattern>
+            <url-pattern>/movies/index.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>Sales</role-name>

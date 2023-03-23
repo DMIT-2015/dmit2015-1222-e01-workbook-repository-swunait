@@ -51,6 +51,11 @@
                                 url="#{request.contextPath}/movies/create.xhtml"/>
                 </p:submenu>
 
+                <p:submenu label="Public Access" icon="pi pi-file">
+                    <p:menuitem value="Movie List" icon="pi pi-list"
+                                url="#{request.contextPath}/public/movies/index.xhtml"/>
+                </p:submenu>
+
                 <c:if test="${not empty request.userPrincipal}">
                     <p:menuitem value="Logout #{request.userPrincipal.name}"
                                 action="#{logout.submit}" />
