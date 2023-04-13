@@ -3,6 +3,7 @@ package dmit2015.restclient;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.json.JsonObject;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import java.util.LinkedHashMap;
@@ -43,21 +44,21 @@ import java.util.List;
 public interface TodoMpRestClient {
 
     @POST
-    void create(Todo newTodo);
+    Response create(Todo newTodo);
 
     @GET
     List<Todo> findAll();
 
     @GET
-    @Path( "/{key}.json")
+    @Path( "/{key}")
     Todo findById(@PathParam("key") Long key);
 
     @PUT
-    @Path( "/{key}.json")
+    @Path( "/{key}")
     Todo update(@PathParam("key") Long key, Todo updatedTodo);
 
     @DELETE
-    @Path("/{key}.json")
+    @Path("/{key}")
     void delete(@PathParam("key") Long key);
 
 }
