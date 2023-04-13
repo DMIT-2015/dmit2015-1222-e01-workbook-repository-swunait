@@ -4,6 +4,16 @@ GET http://localhost:8080/restapi/TodoItems
 ### Get a single TodoItem with an id of 1
 GET http://localhost:8080/restapi/TodoItems/1
 
+### GET a JWT Token for user DLEE
+POST http://localhost:8080/restapi/jwt/ldapJsonLogin
+Content-Type:application/json
+
+{
+  "username": "DLEE",
+  "password":"Password2015"
+}
+
+//Authorization: Bearer eyJraWQiOiJxdWlja3N0YXJ0LWp3dC1pc3N1ZXIiLCJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJETEVFIiwidXBuIjoiRExFRSIsImlzcyI6InF1aWNrc3RhcnQtand0LWlzc3VlciIsImF1ZCI6Imp3dC1hdWRpZW5jZSIsImdyb3VwcyI6WyJTYWxlcyJdLCJqdGkiOiI3ZWZhODc0Yi1hNDg5LTRjMmYtYWJjNy02ZGZjYzllNWMxODIiLCJpYXQiOjE2ODAxNDI1OTksImV4cCI6MTY4MDE1Njk5OX0.D1Zv-H7VNnRm_nyw6tC4ObbmGvg_uoP8bAdrc_Vzd9_cJi9KCrzSkLrjcSvv-8zHdegPlY1V0JRTcXnrp-naAKuRpA6GiARabS_kNdIWS0UR-Ha9oYXv1DM80t48Sm-DX-4ZqOmgtRdxjTQpu3Gt3Oybw62P4Z93lCM55x5t_519mjrR4Hq8BPq-N6Jh5podHCOeHBHie-UMakyp46r430j13EJKbOY70gR_BWAO-L4dttsdgjY3gCp7SBbADX3k-lqG8i_OYGyuO1gjsYoIkXYjqdoZnwqEH11fUr6x8qwUhTd__gUyUkGkgjz4Soe7cKaMbu9zdutcSA0ESCqzbA
 ### POST a new TodoItem with valid data
 POST http://localhost:8080/restapi/TodoItems
 Content-Type: application/json
@@ -39,5 +49,16 @@ Content-Type: application/json
 ### Delete an TodoItem with an id of 2
 DELETE http://localhost:8080/restapi/TodoItems/2
 
+### GET a JWT Token for user DAUSTIN
+POST http://localhost:8080/restapi/jwt/ldapJsonLogin
+Content-Type:application/json
+
+{
+  "username": "DAUSTIN",
+  "password":"Password2015"
+}
+
 ### Delete an TodoItem with an id of 4
 DELETE http://localhost:8080/restapi/TodoItems/4
+Authorization: Bearer eyJraWQiOiJxdWlja3N0YXJ0LWp3dC1pc3N1ZXIiLCJ0eXAiOiJqd3QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJEQVVTVElOIiwidXBuIjoiREFVU1RJTiIsImlzcyI6InF1aWNrc3RhcnQtand0LWlzc3VlciIsImF1ZCI6Imp3dC1hdWRpZW5jZSIsImdyb3VwcyI6WyJJVCJdLCJqdGkiOiI4NDI3YjE4ZC0zMGRiLTQzM2YtYTkyNS0wMWE1YjY3NWU5M2EiLCJpYXQiOjE2ODAxNDI4ODgsImV4cCI6MTY4MDE1NzI4OH0.4U7bl1Uecda8euiLOm5ebW-bQimk0cvTlwjttv9mqiJL3Cw1CD9AkamxkrtLrIJMdG50M2hcIIwDHPAzotbrOt8crsxTm1Y0m95bbj6PWVnN5ZLDAHQa66JP-4-LPzAURrAZ1M7KzwyMmt9X0qHUditjMgwnqVXT8ZoxCtDHs2_5doZ2BGNyglM_gv91dIAoNiCz1gmVpD7kzDAKIHFsMavtFFfzNtEkyK9CmWKotuvsBx2rgi6v-9GmzNArckroHSKuRhoBEtpdz3R1tNgfUXUY-uyT83IRChs1iWraEnnK2wDhpxzmAbj4deytW5iTubrcl_f0yDyMLYOGw0uPZw
+

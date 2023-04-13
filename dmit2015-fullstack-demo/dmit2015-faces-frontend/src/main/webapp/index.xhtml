@@ -1,0 +1,116 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        template="/WEB-INF/faces-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="Frontend Todo"/>
+
+    <ui:define name="maincontent">
+        <!-- If FacesContext message sent from init() method annotated with @PostConstruct in the Faces backing bean class are not shown on page:
+            1) Remove the @PostConstruct annotation from the Faces backing bean class
+            2) Add metadata tag shown below to execute the init() method
+        <f:metadata>
+            <f:viewParam name="dummy" />
+            <f:event type="postInvokeAction" listener="#{currentBeanView.init}" />
+        </f:metadata>
+        -->
+
+        <h1>Frontend Todo</h1>
+
+        <!--Display all messages in FacesContext -->
+        <p:messages id="messages"/>
+        <p:growl id="growl"/>
+
+        <!--Example on conditional rendering, you will need to change the rendered attribute value to an EL value expression -->
+        <p:outputPanel id="outputPanel">
+            <h:outputText
+                    rendered="false"
+                    value="Hello Faces World!"/>
+        </p:outputPanel>
+
+        <h:form prependId="false">
+            <p:focus context="formPanel"/>
+
+            <p:panel id="formPanel" header="Form Panel">
+                <div class="ui-fluid">
+
+                    <!--                    <div class="field">-->
+                    <!--                        <p:outputLabel for="@next" >Text Value</p:outputLabel>-->
+                    <!--                        <p:inputText id="textValue" value="TODO Faces EL"/>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="field col-12 md:col-3">-->
+                    <!--                        <p:outputLabel for="@next" value="Select One Value"/>-->
+                    <!--                        <p:selectOneMenu id="option" value="TODO Faces EL">-->
+                    <!--                            <f:selectItem itemLabel="Select One" itemValue=""/>-->
+                    <!--                            <f:selectItems value="TODO Faces EL"-->
+                    <!--                                           var="currentSelectItem"-->
+                    <!--                                           itemLabel="#{currentSelectItem}"-->
+                    <!--                                           itemValue="#{currentSelectItem}" />-->
+                    <!--                        </p:selectOneMenu>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="field ">-->
+                    <!--                        <p:outputLabel for="@next" value="Select Radios"/>-->
+                    <!--                        <p:selectOneRadio value="TODO Faces EL">-->
+                    <!--                            <f:selectItems value="TODO Faces EL"-->
+                    <!--                                           var="currentSelectItem"-->
+                    <!--                                           itemLabel="#{currentSelectItem}"-->
+                    <!--                                           itemValue="#{currentSelectItem}" />-->
+                    <!--                        </p:selectOneRadio>-->
+                    <!--                    </div>-->
+
+                    <!--                    <div class="field">-->
+                    <!--                        <p:selectBooleanCheckbox  id="booleanCheckbox"-->
+                    <!--                                                  itemLabel="Check me out"-->
+                    <!--                                                  value="TODO Faces EL"/>-->
+                    <!--                    </div>-->
+
+                    <!--                    <div class="field col-12 md:col-2">-->
+                    <!--                        <p:outputLabel for="dateValue" >Date Value</p:outputLabel>-->
+                    <!--                        <p:datePicker id="dateValue"-->
+                    <!--                                      value=""-->
+                    <!--                                      pattern="yyyy-MM-dd"-->
+                    <!--                                      showIcon="true"-->
+                    <!--                                      monthNavigator="true"-->
+                    <!--                                      yearNavigator="true"-->
+                    <!--                        >-->
+                    <!--                            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />-->
+                    <!--                        </p:datePicker>-->
+                    <!--                    </div>-->
+
+                    <!--                    <div class="formgroup-inline">-->
+                    <!--                        <div class="field">-->
+                    <!--                            <p:commandButton value="Submit"-->
+                    <!--                                             update=":messages "-->
+                    <!--                            >-->
+                    <!--                            </p:commandButton>-->
+                    <!--                        </div>-->
+
+                    <!--                        <div class="field">-->
+                    <!--                            <p:commandButton value="Clear"-->
+                    <!--                                             update="@form :outputPanel"-->
+                    <!--                                             styleClass="ui-button-secondary"-->
+                    <!--                            >-->
+                    <!--                            </p:commandButton>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+
+                </div>
+
+            </p:panel>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

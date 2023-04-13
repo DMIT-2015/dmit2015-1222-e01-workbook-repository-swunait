@@ -4,12 +4,9 @@ import common.validator.BeanValidator;
 import dmit2015.entity.TodoItem;
 import dmit2015.repository.TodoItemRepository;
 import jakarta.annotation.security.RolesAllowed;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.json.Json;
 import jakarta.persistence.OptimisticLockException;
-import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -19,7 +16,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.net.URI;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 /**
@@ -67,8 +63,10 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)	// All methods returns data that has been converted to JSON format
 public class TodoItemResource {
 
-    @Inject
-    private JsonWebToken _callerPrincipal;
+//    @Inject
+//    private JsonWebToken _callerPrincipal;
+
+
     @Context
     private UriInfo uriInfo;
 
@@ -90,15 +88,12 @@ public class TodoItemResource {
                     .build();
         }
 
+//        String username = _callerPrincipal.getName();
+//        newTodoItem.setUsername(username);
+
         todoItemRepository.add(newTodoItem);
         URI todoItemsUri = uriInfo.getAbsolutePathBuilder().path(newTodoItem.getId().toString()).build();
-        return Response
-                .created(todoItemsUri)
-                // return a JsonObject in the body of the response
-                .entity(Json.createObjectBuilder()
-                        .add("name", String.valueOf(newTodoItem.getId()))
-                        .build())
-                .build();
+        return Response.created(todoItemsUri).build();
     }
 
     @GET    // GET: /restapi/TodoItems/5
@@ -116,24 +111,11 @@ public class TodoItemResource {
 
     @GET    // GET: /restapi/TodoItems
     public Response getTodoItems() {
+//        String username = _callerPrincipal.getName();
         return Response.ok(todoItemRepository.findAll()).build();
+//        return Response.ok(todoItemRepository.findAllByUsername(username)).build();
     }
 
-    @GET
-    @Path("map")
-    public Response getTodoItemsMap() {
-        return Response.ok(
-                todoItemRepository
-                        .findAll()
-                        .stream()
-                        .collect(Collectors.toMap(
-                                item -> item.getId(),
-                                item -> Json.createObjectBuilder()
-                                        .add("name", item.getName())
-                                        .add("completed", item.isComplete())
-                        ))
-        ).build();
-    }
     @PUT    // PUT: /restapi/TodoItems/5
     @Path("{id}")
     public Response updateTodoItem(@PathParam("id") Long id, TodoItem updatedTodoItem) {
@@ -175,7 +157,7 @@ public class TodoItemResource {
         return Response.ok(existingTodoItem).build();
     }
 
-    @RolesAllowed({"IT"})
+//    @RolesAllowed({"IT"})
     @DELETE // DELETE: /restapi/TodoItems/5
     @Path("{id}")
     public Response deleteTodoItem(@PathParam("id") Long id) {

@@ -1,0 +1,82 @@
+<!DOCTYPE html >
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:faces="jakarta.faces"
+        xmlns:ui="jakarta.faces.facelets"
+        xmlns:f="jakarta.faces.core"
+        xmlns:h="jakarta.faces.html"
+        xmlns:pt="jakarta.faces.passthrough"
+        xmlns:cc="jakarta.faces.composite"
+        xmlns:c="jakarta.tags.core"
+        xmlns:fn="jakarta.tags.functions"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="${description}"/>
+    <meta name="keywords" content="${keywords}"/>
+
+    <title>${title}</title>
+
+    <ui:insert name="externalstyles">
+    </ui:insert>
+
+    <style>
+        ${internalstyles}
+    </style>
+
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.0/primeflex.min.css"/>
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.0/themes/saga-blue.css"/>
+
+    <ui:insert name="headscripts">
+    </ui:insert>
+</h:head>
+
+<h:body style="padding: 60px; min-height: 2000px;">
+
+    <div class="card">
+        <h:form>
+            <p:growl id="growl"/>
+
+            <p:menubar>
+                <p:menuitem value="Home" icon="pi pi-fw pi-home" url="#{request.contextPath}/index.xhtml"/>
+
+                <p:submenu label="Todo" icon="pi pi-fw pi-file">
+                    <p:menuitem value="List" icon="pi pi-fw pi-list"
+                                url="#{request.contextPath}/todos/index.xhtml"/>
+                    <p:menuitem value="Create" icon="pi pi-fw pi-plus"
+                                url="#{request.contextPath}/todos/create.xhtml"/>
+                </p:submenu>
+
+            </p:menubar>
+        </h:form>
+    </div>
+
+    <ui:insert name="maincontent">
+        NO MAIN CONTENT PROVIDED
+    </ui:insert>
+
+    <hr/>
+    <footer>
+        <p>This
+            <a href="https://eclipse-ee4j.github.io/jakartaee-tutorial" target="_blanks">Jakarta EE 10</a>
+            web application is built using
+            <a href="https://www.jetbrains.com/idea/" target="_blanks">IntelliJ IDEA</a>,
+            <a href="https://jakarta.ee/specifications/faces/4.0/jakarta-faces-4.0.html"
+               target="_blanks">Jakarta Faces</a>,
+            <a href="https://omnifaces.org/" target="_blanks">OmniFaces</a>,
+            <a href="https://www.primefaces.org/showcase" target="_blanks">PrimeFaces</a>,
+            <a href="https://www.primefaces.org/primeflex/" target="_blanks">PrimeFlex</a>,
+            and runs on
+            <a href="http://www.wildfly.org/" target="_blanks">WildFly</a>
+        </p>
+    </footer>
+
+    <ui:insert name="bodyscripts">
+    </ui:insert>
+</h:body>
+
+</html>

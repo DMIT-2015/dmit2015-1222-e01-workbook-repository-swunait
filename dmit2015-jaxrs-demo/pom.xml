@@ -140,6 +140,34 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.31</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>yasson</artifactId>
+            <version>3.0.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>5.0</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-all</artifactId>
+            <version>2.1.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -178,8 +206,7 @@
                         <!-- https://docs.wildfly.org/27/Bootable_Guide.html#wildfly_layers -->
                         <layer>jaxrs-server</layer>
                         <layer>management</layer>
-                        <layer>microprofile-config</layer>
-                        <layer>microprofile-rest-client</layer>
+                        <layer>microprofile-platform</layer>
                     </layers>
                     <excluded-layers>
                         <layer>deployment-scanner</layer>

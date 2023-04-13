@@ -1,18 +1,18 @@
 package dmit2015.faces;
 
 import dmit2015.restclient.Todo;
-import dmit2015.restclient.TodoFirebaseMpRestClient;
+import dmit2015.restclient.TodoMpRestClient;
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import lombok.Getter;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Messages;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,15 +24,15 @@ public class TodoListView implements Serializable {
 
     @Inject
     @RestClient
-    private TodoFirebaseMpRestClient _todoFirebaseMpRestClient;
+    private TodoMpRestClient _todoMpRestClient;
 
     @Getter
-    private Map<String, Todo> todoMap;
+    private List<Todo> todoList;
 
     @PostConstruct  // After @Inject is complete
     public void init() {
         try {
-            todoMap = _todoFirebaseMpRestClient.findAll();
+            todoList = _todoMpRestClient.findAll();
         } catch (Exception ex) {
             Messages.addGlobalError(ex.getMessage());
         }

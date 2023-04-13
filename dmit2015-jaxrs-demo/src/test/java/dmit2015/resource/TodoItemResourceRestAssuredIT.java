@@ -8,7 +8,9 @@ import jakarta.json.bind.JsonbBuilder;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +44,9 @@ class TodoItemResourceRestAssuredIT {
         String jsonBody = response.getBody().asString();
 
         Jsonb jsonb = JsonbBuilder.create();
-        List<TodoItem> todos = jsonb.fromJson(jsonBody, new ArrayList<TodoItem>(){}.getClass().getGenericSuperclass());
+        //List<TodoItem> todos = jsonb.fromJson(jsonBody, new ArrayList<TodoItem>(){}.getClass().getGenericSuperclass());
+        Map<String, TodoItem> todos = jsonb.fromJson(jsonBody,
+                new HashMap<String, TodoItem>(){}.getClass().getGenericSuperclass());
 
         assertEquals(3, todos.size());
         TodoItem firstTodoItem = todos.get(0);

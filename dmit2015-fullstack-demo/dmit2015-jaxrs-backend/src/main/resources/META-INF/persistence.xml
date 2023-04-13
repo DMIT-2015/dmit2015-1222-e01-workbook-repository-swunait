@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+
+    <persistence-unit name="h2database-jpa-pu" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:app/datasources/h2databaseDS</jta-data-source>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- database.action: drop-and-create, create, update, none -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+        </properties>
+    </persistence-unit>
+
+
+    <!--    <persistence-unit name="local-mssql-jpa-pu" transaction-type="JTA">-->
+    <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+    <!--        <jta-data-source>java:app/datasources/localMssqlDS</jta-data-source>-->
+
+    <!--        <properties>-->
+    <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>-->
+    <!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+    <!--        </properties>-->
+    <!--    </persistence-unit>-->
+
+    <!--    <persistence-unit name="remote-mssql-jpa-pu" transaction-type="JTA">-->
+    <!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+    <!--        <jta-data-source>java:app/datasources/remoteMssqlDS</jta-data-source>-->
+
+    <!--        <properties>-->
+    <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>-->
+    <!--            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+    <!--        </properties>-->
+    <!--    </persistence-unit>-->
+
+
+</persistence>

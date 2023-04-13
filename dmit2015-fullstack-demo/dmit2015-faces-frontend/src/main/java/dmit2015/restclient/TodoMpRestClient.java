@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * The baseUri for the web MpRestClient be set in either microprofile-config.properties (recommended)
@@ -38,29 +39,25 @@ import java.util.LinkedHashMap;
  * </code>
  */
 @RequestScoped
-@RegisterRestClient(baseUri = "https://dmit2015-1222-swu-demos-default-rtdb.firebaseio.com")
+@RegisterRestClient(baseUri = "http://localhost:8080/dmit2015-jaxrs-backend/restapi/TodoItems")
 public interface TodoMpRestClient {
 
-    final String DOCUMENT_URL = "/Todo";
-
     @POST
-    @Path(DOCUMENT_URL + ".json")
-    JsonObject create(Todo newTodo);
+    void create(Todo newTodo);
 
     @GET
-    @Path(DOCUMENT_URL + ".json")
-    LinkedHashMap<String, Todo> findAll();
+    List<Todo> findAll();
 
     @GET
-    @Path(DOCUMENT_URL + "/{key}.json")
-    Todo findByKey(@PathParam("key") String key);
+    @Path( "/{key}.json")
+    Todo findById(@PathParam("key") Long key);
 
     @PUT
-    @Path(DOCUMENT_URL + "/{key}.json")
-    Todo update(@PathParam("key") String key, Todo updatedTodo);
+    @Path( "/{key}.json")
+    Todo update(@PathParam("key") Long key, Todo updatedTodo);
 
     @DELETE
-    @Path(DOCUMENT_URL + "/{key}.json")
-    void delete(@PathParam("key") String key);
+    @Path("/{key}.json")
+    void delete(@PathParam("key") Long key);
 
 }

@@ -9,7 +9,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
@@ -19,8 +18,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(ArquillianExtension.class)
-public class TodoMpRestClient_ArquillianIT { // The class must be declared as public
+public class TodoFirebaseMpRestClient_ArquillianIT { // The class must be declared as public
 
     static String mavenArtifactIdId;
 
@@ -44,23 +41,23 @@ public class TodoMpRestClient_ArquillianIT { // The class must be declared as pu
         final String archiveName = model.getArtifactId() + ".war";
         return ShrinkWrap.create(WebArchive.class, archiveName)
                 .addAsLibraries(pomFile.resolve("org.codehaus.plexus:plexus-utils:3.4.2").withTransitivity().asFile())
-                .addClasses(Todo.class, TodoMpRestClient.class)
+                .addClasses(Todo.class, TodoFirebaseMpRestClient.class)
 //                .addAsManifestResource(new File("src/main/resources/META-INF/microprofile-config.properties"))
                 .addAsWebInfResource(new File("src/main/resources/META-INF/beans.xml"));
     }
 
     @Inject
     @RestClient
-    private TodoMpRestClient _todoMpRestClient;
+    private TodoFirebaseMpRestClient _todoFirebaseMpRestClient;
 
     static String editKey;
 
     @Order(1)
     @Test
     void shouldFindAll() {
-        assertNotNull(_todoMpRestClient);
+        assertNotNull(_todoFirebaseMpRestClient);
         // Arrange
-        Map<String, Todo> TodoMap = _todoMpRestClient.findAll();
+        Map<String, Todo> TodoMap = _todoFirebaseMpRestClient.findAll();
 //
         assertEquals(3, TodoMap.size());
         var firstKey = TodoMap.keySet().stream().findFirst().orElseThrow();
@@ -81,7 +78,7 @@ public class TodoMpRestClient_ArquillianIT { // The class must be declared as pu
         newTodo.setTask("Talk to your classmate as loud as possible");
         newTodo.setImportant(false);
 
-        JsonObject responseObject = _todoMpRestClient.create(newTodo);
+        JsonObject responseObject = _todoFirebaseMpRestClient.create(newTodo);
         editKey = responseObject.getString("name");
         assertNotNull(editKey);
 
@@ -91,7 +88,7 @@ public class TodoMpRestClient_ArquillianIT { // The class must be declared as pu
     @Test
     void shouldFineOne() {
         // Arrange and Act
-        Todo existingTodo = _todoMpRestClient.findByKey(editKey);
+        Todo existingTodo = _todoFirebaseMpRestClient.findByKey(editKey);
 
         // Assert
         assertNotNull(existingTodo);
@@ -103,14 +100,14 @@ public class TodoMpRestClient_ArquillianIT { // The class must be declared as pu
     @Test
     void shouldUpdate() {
         // Arrange
-        Todo existingTodo = _todoMpRestClient.findByKey(editKey);
+        Todo existingTodo = _todoFirebaseMpRestClient.findByKey(editKey);
         assertNotNull(existingTodo);
         // Act
         existingTodo.setTask("Talk quitely to your classmates");
         existingTodo.setImportant(true);
         existingTodo.setCompleted(true);
 
-        Todo updatedTodo = _todoMpRestClient.update(editKey, existingTodo);
+        Todo updatedTodo = _todoFirebaseMpRestClient.update(editKey, existingTodo);
         // Assert
          assertEquals(existingTodo.getTask(), updatedTodo.getTask());
          assertEquals(existingTodo.getImportant(), updatedTodo.getImportant());
@@ -121,8 +118,8 @@ public class TodoMpRestClient_ArquillianIT { // The class must be declared as pu
     @Test
     void shouldDelete() {
         // Arrange and Act
-        _todoMpRestClient.delete(editKey);
+        _todoFirebaseMpRestClient.delete(editKey);
         // Assert
-        assertNull(_todoMpRestClient.findByKey(editKey));
+        assertNull(_todoFirebaseMpRestClient.findByKey(editKey));
     }
 }
